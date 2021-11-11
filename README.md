@@ -4,7 +4,7 @@
 
 transfer learning : https://www.youtube.com/watch?v=WJZoywOG1cs&list=PLhhyoLH6IjfxVOdVC1P1L5z5azs0XjMsb&index=11
 
-
+dataaugmentation (spliting data) : https://blog.naver.com/siniphia/222118275636
 ---
 
 
