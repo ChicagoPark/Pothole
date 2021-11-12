@@ -77,6 +77,9 @@ keras.utils.plot_model(model, "my_fashion_mnist_model.png", show_shapes=True)
 # [2] 모델 요약
 model.summary()
 ```
+<!--
+https://codetorial.net/tensorflow/visualize_model.html
+-->
 ---
 
 ---
