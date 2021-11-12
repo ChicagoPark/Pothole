@@ -20,6 +20,9 @@ early stopping : https://youtu.be/2UHCjhyNLKw
 https://drive.google.com/file/d/1X1J2RwBu9KhRpw8GqS-s1ZeI6YF0VZTO/view
 ! gdown --id 1X1J2RwBu9KhRpw8GqS-s1ZeI6YF0VZTO
 ```
+<!-- 코랩 드라이브 가져오는 것 알
+https://www.youtube.com/watch?v=Mq8-WdcnzVo
+-->
 
 ## [절차1] : 데이터 불러오기
 
