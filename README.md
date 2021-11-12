@@ -14,20 +14,16 @@ early stopping : https://youtu.be/2UHCjhyNLKw
 ## [0] 실습 유용한 명령어
 
 ---
-`데이터 가져오기`
+
+## [절차1] : 데이터 불러오기
+
 ```python
-# "Annotations/" 에 있는 파일 불러오기
-annots = os.listdir('Annotations')    # Annotations 에 있는 모든 파일명들이 list 로 저장이 된다.
-# "Images/" 에 있는 파일 불러오기
-images = os.listdir('Images/Images')  # Annotations 에 있는 모든 파일명들이 list 로 저장이 된다.
-
-annots = sorted(annots)               # sorted 파일명을 받아온다.
-images = sorted(images)
+base_path = os.path.abspath("실차 데이터")
 ```
+## [절차2] : 학습데이터 검증데이터 분리 및 Data Augmentation 변수 할당
 
-`데이터 Augmentation 및 데이터 분리`
 
-#### 이 아이디어의 핵심은 seed 를 활용하여 train set 과 val set 의 augmentation 적용을 분리할 수 있는 것이다.
+#### `SEED 를 활용한 데이터 분리 : seed 를 활용하여 train set 과 val set 의 augmentation 적용을 분리할 수 있는 것이다.`
 ```python
 datagen_train = tf.keras.preprocessing.image.ImageDataGenerator(
     rescale=1./255, 
@@ -61,6 +57,17 @@ val_generator = datagen_val.flow_from_directory(
     shuffle=True,
     subset='validation')
 ```
+## [절차3] : 모델 가져오기
+
+
+
+## [절차4] : 모델 훈련 시키기
+
+
+## [절차5] : 결과 시각화하기
+
+
+## [절차6] : Test 진행하기
 
 `시각화`
 
