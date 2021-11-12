@@ -14,7 +14,7 @@ early stopping : https://youtu.be/2UHCjhyNLKw
 ## [0] 실습 유용한 명령어
 
 ---
-`데이터 전처리`
+`데이터 가져오기`
 ```python
 # "Annotations/" 에 있는 파일 불러오기
 annots = os.listdir('Annotations')    # Annotations 에 있는 모든 파일명들이 list 로 저장이 된다.
@@ -23,6 +23,43 @@ images = os.listdir('Images/Images')  # Annotations 에 있는 모든 파일명�
 
 annots = sorted(annots)               # sorted 파일명을 받아온다.
 images = sorted(images)
+```
+
+`데이터 Augmentation 및 데이터 분리`
+
+#### 이 아이디어의 핵심은 seed 를 활용하여 train set 과 val set 의 augmentation 적용을 분리할 수 있는 것이다.
+```python
+datagen_train = tf.keras.preprocessing.image.ImageDataGenerator(
+    rescale=1./255, 
+    validation_split=0.2,
+    rotation_range=20,
+    width_shift_range=0.2,
+    height_shift_range=0.2,
+    shear_range=0.2,
+    zoom_range=0.2,
+    horizontal_flip=True,
+    vertical_flip=True,
+    fill_mode='nearest')
+
+datagen_val = tf.keras.preprocessing.image.ImageDataGenerator(
+    rescale=1./255, 
+    validation_split=0.2)    
+
+train_generator = datagen_train.flow_from_directory(
+    data_root,
+    seed=42,
+    target_size=(IMAGE_SIZE, IMAGE_SIZE),
+    batch_size=BATCH_SIZE, 
+    shuffle=True,
+    subset='training')
+
+val_generator = datagen_val.flow_from_directory(
+    data_root,
+    seed=42,
+    target_size=(IMAGE_SIZE, IMAGE_SIZE),
+    batch_size=BATCH_SIZE, 
+    shuffle=True,
+    subset='validation')
 ```
 
 `시각화`
