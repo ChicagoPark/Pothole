@@ -15,6 +15,12 @@ early stopping : https://youtu.be/2UHCjhyNLKw
 
 ---
 
+`코랩에 바로 구글드라이브 경로로만 데이터 가져오기`
+```bash
+https://drive.google.com/file/d/1X1J2RwBu9KhRpw8GqS-s1ZeI6YF0VZTO/view
+! gdown --id 1X1J2RwBu9KhRpw8GqS-s1ZeI6YF0VZTO
+```
+
 ## [절차1] : 데이터 불러오기
 
 ```python
