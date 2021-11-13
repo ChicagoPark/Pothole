@@ -66,7 +66,76 @@ val_generator = datagen_val.flow_from_directory(
     shuffle=True,
     subset='validation')
 ```
-## [절차3] : 모델 가져오기
+## [절차3] : 모델 가져오고, 최적의 하이퍼파라미터 찾아내기
+
+`모델 빌드하기`
+```python
+def build_model(hp):
+    base_model = tf.keras.applications.Xception(
+        include_top=False,
+        weights="imagenet",
+        input_tensor=None,
+        input_shape=None)
+
+    # 해당 층의 매개변수는 그대로 사용하기 위해서 freezing 을 한다.
+    base_model.trainable = False
+    inputs = keras.Input(shape=(320, 320, 3))
+    x = base_model(inputs, training=False)
+    #x = keras.layers.Dropout(0.2)(x)
+    x=keras.layers.GlobalAveragePooling2D()(x)
+    
+    # Tune the number of layers.
+    for i in range(hp.Int("num_layers", 1, 5)):
+        x=keras.layers.Dense(# Tune number of units separately.
+                units=hp.Int(f"units_{i}", min_value=32, max_value=512, step=32),
+                activation=hp.Choice("activation", ["relu", "elu"]))(x)
+    if hp.Boolean("dropout"):
+        x = keras.layers.Dropout(0.25)(x)
+    outputs = keras.layers.Dense(3, activation='softmax')(x)
+    
+    model = keras.Model(inputs=inputs, outputs=outputs)
+    # Define the optimizer learning rate as a hyperparameter.
+    learning_rate = hp.Float("lr", min_value=1e-4, max_value=1e-2, sampling="log")
+    
+    optimizer = tf.keras.optimizers.Adam(learning_rate=learning_rate)
+    model.compile(optimizer=optimizer, loss=tf.keras.losses.SparseCategoricalCrossentropy(), # 교차엔트로피로 구성
+              metrics=['accuracy'])
+    
+    return model
+```
+
+`keras_tuner 적용가능한지 확인하기`
+```python
+import keras_tuner as kt
+
+build_model(kt.HyperParameters())
+```
+
+`파라미터 찾아나서기`
+```python
+tuner = kt.RandomSearch(
+    hypermodel=build_model,
+    objective="accuracy",
+    max_trials=3,
+    executions_per_trial=2,
+    overwrite=True,
+    directory="my_dir",
+    project_name="helloworld",
+)
+```
+`설정한 것 확인하기`
+```python
+tuner.search_space_summary()
+```
+
+`찾아 나선다`
+```python
+tuner.search(train_data_gen,validation_data=val_data_gen, epochs=2)
+```
+`최종결과 도출`
+```python
+tuner.results_summary()
+```
 
 
 
