@@ -28,7 +28,7 @@ test_data_gen = test_image_generator.flow_from_directory(batch_size=1,
 model_paths = glob.glob(os.path.join("saved_models", "*.h5"))
 with open("result.txt", "a") as f:
     f.write(f"model_path\taccuracy\n")
-    #cnt = 0
+    cnt = 0
     for model_path in model_paths:
         model = tf.keras.models.load_model(model_path)
         # test_img 와 test_label 은 직접 불러올 것
