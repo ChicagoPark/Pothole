@@ -9,17 +9,17 @@ parser.add_argument("--input_dir", type=str)
 
 args = parser.parse_args()
 
-# 데이터 디렉터리 경로를 받아오는 코드
+# Receive data directory paths
 input_dir = args.input_dir
 
-# input_dir 을 인자로 받아 Test Dataset 불러오기
+# Take input_dir as a factor and bring up the test dataset
 IMG_HEIGHT = 320
 IMG_WIDTH = 320
-# 입력받은 데이터 경로 설정 (자세한 사항 - 보고서의 이미지 로딩과 동일)
+# Set the input data path
 base_path = os.path.abspath(input_dir)
-# 설정된 폴더에서 데이터를 손 쉽게 불러올 수 있는 ImageDataGenerator 를 활용
+# Use ImageDataGenerator that makes it easy to retrieve data from a set folder.
 test_image_generator = ImageDataGenerator(rescale=1./255)
-# 모델 입력에 맞게 타겟 사이즈를 설정 하고, 웟핫잇코딩이므로 categorical 로 설정
+# The target size is set according to the model input, and since it is one-hot encoding, set it to 'categorical'.
 test_data_gen = test_image_generator.flow_from_directory(batch_size=1,
                                                         directory=base_path,
                                                         target_size=(IMG_HEIGHT, IMG_WIDTH),
@@ -31,7 +31,6 @@ with open("result.txt", "a") as f:
     cnt = 0
     for model_path in model_paths:
         model = tf.keras.models.load_model(model_path)
-        # test_img 와 test_label 은 직접 불러올 것
         result = model.evaluate(test_data_gen, return_dict=True)
         accu = result["accuracy"]
         print(f"{model_path}\t{accu}")
