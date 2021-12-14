@@ -1,13 +1,14 @@
 # Lecture : Big Data & AI (1324201-01)
 `This project is done by Chicago Park`
 
-## Project Title : Development of an artificial intelligence-based pothole automatic detection system.
-<img width="750" alt="IMG" src="https://user-images.githubusercontent.com/73331241/145944953-3521e9fc-a195-4069-bad0-af378339a093.jpeg">
-
 ---
 ### Overall Ranking of project : n / 53
 ### Ranking of accuracy : n / 53
 ---
+
+## Project Title : Development of an artificial intelligence-based pothole automatic detection system.
+<img width="750" alt="IMG" src="https://user-images.githubusercontent.com/73331241/145944953-3521e9fc-a195-4069-bad0-af378339a093.jpeg">
+
 
 ### `Project Report`
 [Project_Report.pdf](https://github.com/ChicagoPark/Pothole_Detection_Project/files/7710069/Project_Report.pdf)
