@@ -25,6 +25,6 @@
 
 
 
-### `All the content about code is in "train.ipynb"`
+### `All the code is in "train.ipynb"`
 
 
