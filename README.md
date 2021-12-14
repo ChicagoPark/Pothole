@@ -14,6 +14,6 @@
 <img width="750" alt="IMG" src="https://user-images.githubusercontent.com/73331241/145943469-be5a096b-ecfe-44f0-b2be-d531683a6672.jpeg">
 
 
-### `All the content about code is in "train.ipynb'`
+### `All the content about code is in "train.ipynb"`
 
 
