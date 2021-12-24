@@ -1,4 +1,4 @@
-# Lecture : Big Data & AI (1324201-01)
+# Lecture : Big Data & AI (1324201-01) December 2021
 `This project is done by Chicago Park`
 
 ---
