@@ -2,8 +2,8 @@
 `This project is done by Chicago Park`
 
 ---
-### Overall Ranking of project : `1 / 51`
-### Ranking of accuracy : `2 / 51`
+### Overall Ranking of project : `1st / 51`
+### Ranking of accuracy : `2nd / 51`
 ---
 
 ## Project Title : Development of an artificial intelligence-based pothole automatic detection system.
