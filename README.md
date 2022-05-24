@@ -1,4 +1,4 @@
-# Course : Big Data & AI (1324201-01) in the second semester of 2021
+# Course: Big Data & AI (1324201-01) in the second semester of 2021
 `This project is done by Chicago Park (Youngil Park)`
 
 ---
